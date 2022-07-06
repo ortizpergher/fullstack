@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+
+  app:
+    build:
+      context: .
+    container_name: cars_application
+    ports:
+      - 3000:3000
+      - 9229:9229
+    working_dir: /home/node/app
+    volumes:
+      - .:/home/node/app
+    networks:
+      - cars_network
+    tty: true
+
+  db:
+    image: postgres
+    restart: always
+    container_name: postgres-cars
+    environment:
+      POSTGRES_PASSWORD: carspasswd
+      POSTGRES_USER: cars_user_db
+      POSTGRES_DB: cars_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - cars_network
+
+  db_test:
+    image: postgres
+    restart: always
+    container_name: test-postgres-cars
+    environment:
+      POSTGRES_PASSWORD: test2022
+      POSTGRES_USER: test
+      POSTGRES_DB: test_app
+    ports:
+      - 5433:5432
+    networks:
+      - cars_network
+
+networks:
+  cars_network:
+    driver: bridge
+
+volumes:
+  postgres:
