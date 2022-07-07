@@ -1,7 +1,7 @@
 import { pgHelper } from '@core/infra/connections/pg-helper';
-import { VehicleEntity } from '@core/infra/database/entities/vehicle.entity';
-import { CreateVehicleDTO } from '../domain/dtos';
-import { Vehicle } from '../domain/model';
+import { VehicleEntity } from '@core/infra/database/entities';
+import { CreateVehicleDTO } from '../../domain/dtos';
+import { Vehicle } from '../../domain/model';
 
 export class VehicleRepository {
   async findByLicensePlate(licensePlate: string): Promise<VehicleEntity | null> {

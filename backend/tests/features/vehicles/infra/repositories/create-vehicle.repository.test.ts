@@ -1,6 +1,6 @@
 import { pgHelper } from '@core/infra/connections/pg-helper';
 import { VehicleEntity } from '@core/infra/database/entities';
-import { VehicleRepository } from '@features/vehicles/repositories';
+import { VehicleRepository } from '@features/vehicles/infra/repositories';
 
 const clearEntities = async () => {
   await pgHelper.client.manager.delete(VehicleEntity, {});

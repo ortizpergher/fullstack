@@ -1,6 +1,5 @@
-import { pgHelper } from '@core/infra/connections/pg-helper';
 import { AppError } from '@core/domain/errors';
-import { VehicleRepository } from '@features/vehicles/repositories/vehicle-repository';
+import { VehicleRepository } from '@features/vehicles/infra/repositories';
 import { CreateVehicleUseCase } from '@features/vehicles/domain/usecases';
 
 const makeSut = () => {

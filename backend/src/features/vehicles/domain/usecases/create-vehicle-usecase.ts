@@ -1,5 +1,5 @@
 import { UseCase } from '@core/domain/contracts/usecase';
-import { VehicleRepository } from '@features/vehicles/repositories/vehicle-repository';
+import { VehicleRepository } from '@features/vehicles/infra/repositories';
 import { CreateVehicleDTO } from '../dtos';
 import { AppError } from '@core/domain/errors/app-error';
 
