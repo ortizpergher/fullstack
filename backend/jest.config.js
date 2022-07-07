@@ -14,7 +14,7 @@ module.exports = {
   // cacheDirectory: "/private/var/folders/zx/p5p_qxcx7nl1xr0c58xnhmmw0000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  // clearMocks: true,
+  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -27,6 +27,7 @@ module.exports = {
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
+    '<rootDir>/src/core/infra/database/migrations',
     '/node_modules/',
   ],
 
@@ -88,7 +89,11 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    '@core/(.*)': '<rootDir>/src/core/$1',
+    '@main/(.*)': '<rootDir>/src/main/$1',
+    '@features/(.*)': '<rootDir>/src/features/$1',
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -152,7 +157,7 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
+  //   "**/(*.)+(spec|test).ts",
   //   "**/?(*.)+(spec|test).[tj]s?(x)"
   // ],
 
@@ -171,7 +176,9 @@ module.exports = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: { '.+\\.ts$': 'ts-jest' },
+  transform: {
+    ".+\\.ts$": "ts-jest",
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [

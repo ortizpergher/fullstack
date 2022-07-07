@@ -1,4 +1,4 @@
-import { datasource } from './src/database/typeorm';
+import { datasource } from './src/core/infra/database/typeorm';
 
 (async () => {
   await datasource.initialize();
