@@ -1,6 +1,4 @@
 import './config/module-alias';
-import 'reflect-metadata';
-
 import { app } from './config/app';
 import { pgHelper } from '@core/infra/connections/pg-helper';
 
