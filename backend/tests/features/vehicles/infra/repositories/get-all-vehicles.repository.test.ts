@@ -33,6 +33,7 @@ const makeSut = () => {
 describe('Get All Vehicle Repository', () => {
   beforeAll(async () => {
     await pgHelper.connect();
+    await clearEntities();
   });
 
   afterEach(async () => {
@@ -49,7 +50,7 @@ describe('Get All Vehicle Repository', () => {
 
     const vehicle = await makeVehicle();
 
-    const result = await sut.getAllVehicle();
+    const result = await sut.getAllVehicles();
 
     expect(result).toBeTruthy();
     expect(result).toHaveLength(1);
@@ -69,7 +70,7 @@ describe('Get All Vehicle Repository', () => {
   it('Should return a empty list', async () => {
     const sut = makeSut();
 
-    const result = await sut.getAllVehicle();
+    const result = await sut.getAllVehicles();
 
     expect(result).toBeTruthy();
     expect(result).toEqual([]);
@@ -80,7 +81,7 @@ describe('Get All Vehicle Repository', () => {
 
     await makeVehicle(false);
 
-    const result = await sut.getAllVehicle();
+    const result = await sut.getAllVehicles();
 
     expect(result[0].enable).toBeFalsy();
   });
