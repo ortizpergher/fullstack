@@ -4,7 +4,7 @@ import { CreateVehicleDTO } from '../../domain/dtos';
 import { Vehicle, VehicleList } from '../../domain/model';
 
 export class VehicleRepository {
-  async getAllVehicle(): Promise<VehicleList[]> {
+  async getAllVehicles(): Promise<VehicleList[]> {
     const repository = await pgHelper.getRepository(VehicleEntity);
 
     const findVehicles = await repository.find();
