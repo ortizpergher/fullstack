@@ -1,7 +1,22 @@
 import request from 'supertest';
 import { app } from '@main/config/app';
+import { pgHelper } from '@core/infra/connections/pg-helper';
+import { VehicleEntity } from '@core/infra/database/entities';
+
+const clearDB = async () => {
+  const repository = await pgHelper.getRepository(VehicleEntity);
+  return await repository.clear();
+};
 
 describe('Create vehicle controller tests', () => {
+  beforeEach(() => {
+    clearDB();
+  });
+
+  afterAll(() => {
+    clearDB();
+  });
+
   it('Should create a vehicle successfully', async () => {
     const response = await request(app).post('/vehicles').send({
       licensePlate: 'IBC-9877',
