@@ -1,2 +1,6 @@
 {{page-title "Vehicles"}}
 <h3 style="text-align:center">Insira aqui sua Lista de Veículos</h3>
+
+{{#each vehicles as |vehicle|}}
+  <h3>{{vehicle.licensePlate}}</h3>
+{{/each}}
